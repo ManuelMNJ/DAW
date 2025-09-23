@@ -3,26 +3,29 @@ package genericos2;
 import genericos1.ColeccionSimpleGenerica;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public abstract class Pila<T> implements ColeccionSimpleGenerica<T> {
 
-    private final LinkedList<T> elementos;
+    private  List<T> elementos;
 
     public Pila() {
         this.elementos = new LinkedList<>();
     }
 
     @Override
-    public void insertar(T elemento) {
-        elementos.addFirst(elemento);
+    public T primero() {
+       return elementos.getFirst();
     }
 
     @Override
     public T extraer() {
-        if (estaVacia()) {
-            throw new RuntimeException("La pila está vacía");
-        }
         return elementos.removeFirst();
+    }
+
+    @Override
+    public void insertar(T e) {
+        elementos.add(e);
     }
 
     @Override
@@ -30,25 +33,11 @@ public abstract class Pila<T> implements ColeccionSimpleGenerica<T> {
         return elementos.isEmpty();
     }
 
-    public int tamanio() {
-        return elementos.size();
-    }
-
     public String toString() {
         if (estaVacia()) {
             return "[]";
         }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < elementos.size(); i++) {
-            sb.append(elementos.get(i));
-            if (i < elementos.size() - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append("]");
-        return sb.toString();
+        return elementos.toString();
     }
 }
 
