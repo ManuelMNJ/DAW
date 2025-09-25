@@ -12,7 +12,7 @@ public class PruebaMatriz {
 
         matrizEjemplo.toString();
 
-        System.out.println(matrizEjemplo.get(1,2));
+        System.out.println(matrizEjemplo.get(0, 1));
     }
 
 }
